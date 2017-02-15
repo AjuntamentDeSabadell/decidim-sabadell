@@ -6,7 +6,7 @@ Decidim.configure do |config|
   config.authorization_handlers = []
 
   # Uncomment this lines to set your preferred locales
-  # config.available_locales = %i{en ca es}
+  config.available_locales = %i{ca es}
 
   # Geocoder configuration
   # config.geocoder = {
