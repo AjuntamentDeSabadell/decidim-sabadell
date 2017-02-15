@@ -9,9 +9,6 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  
-  gem "decidim-dev", git: 'https://github.com/AjuntamentdeBarcelona/decidim.git'
-  
 end
 
 group :development do
@@ -24,6 +21,8 @@ end
 
 group :production do
   gem "rails_12factor"
+  gem 'fog-aws'
+  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
