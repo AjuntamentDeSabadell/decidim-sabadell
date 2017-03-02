@@ -1,26 +1,21 @@
-# README
+# decidim-sabadell
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Citizen Participation and Open Government Application
 
-Things you may want to cover:
+This is the opensource code repository for "decidim-sabadell", based on [Decidim](https://github.com/AjuntamentdeSabadell/decidim).
 
-* Ruby version
+## Development environment setup
 
-* System dependencies
+You can setup everything with Docker & Docker compose, run:
 
-* Configuration
+```
+docker-compose build
+docker-compose run --rm app bundle exec rake db:create db:schema:load db:seed
+docker-compose up
+```
 
-* Database creation
+## Licence
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Code published under AFFERO GPL v3 (see [LICENSE-AGPLv3.txt](LICENSE-AGPLv3.txt))
