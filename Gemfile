@@ -17,6 +17,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker', '~> 1.7.3'
+  gem "decidim-dev", git: 'https://github.com/AjuntamentdeBarcelona/decidim.git'
 end
 
 group :production do

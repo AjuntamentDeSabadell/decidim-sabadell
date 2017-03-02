@@ -8,8 +8,7 @@ services:
     volumes:
       - .:/code
     environment:
-      - DATABASE_HOST=pg
-      - DATABASE_USERNAME=postgres
+      - DATABASE_URL=postgres://postgres@pg:5432/decidim
     ports:
       - 3000:3000
     links:

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227154544) do
+ActiveRecord::Schema.define(version: 20170301104225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170227154544) do
     t.integer  "decidim_category_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "reference",           null: false
     t.index ["decidim_category_id"], name: "index_decidim_budgets_projects_on_decidim_category_id", using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_budgets_projects_on_decidim_feature_id", using: :btree
     t.index ["decidim_scope_id"], name: "index_decidim_budgets_projects_on_decidim_scope_id", using: :btree
@@ -158,6 +159,7 @@ ActiveRecord::Schema.define(version: 20170227154544) do
     t.time     "closed_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "reference",               null: false
     t.index ["decidim_author_id"], name: "index_decidim_meetings_meetings_on_decidim_author_id", using: :btree
     t.index ["decidim_category_id"], name: "index_decidim_meetings_meetings_on_decidim_category_id", using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_meetings_meetings_on_decidim_feature_id", using: :btree
@@ -199,6 +201,7 @@ ActiveRecord::Schema.define(version: 20170227154544) do
     t.string   "official_img_header"
     t.string   "official_img_footer"
     t.string   "official_url"
+    t.string   "reference_prefix",                   null: false
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true, using: :btree
     t.index ["name"], name: "index_decidim_organizations_on_name", unique: true, using: :btree
   end
@@ -243,11 +246,12 @@ ActiveRecord::Schema.define(version: 20170227154544) do
     t.datetime "published_at"
     t.jsonb    "developer_group"
     t.date     "end_date"
-    t.jsonb    "scope"
+    t.jsonb    "meta_scope"
     t.jsonb    "local_area"
     t.jsonb    "target"
     t.jsonb    "participatory_scope"
     t.jsonb    "participatory_structure"
+    t.integer  "decidim_scope_id"
     t.index ["decidim_organization_id", "slug"], name: "index_unique_process_slug_and_organization", unique: true, using: :btree
     t.index ["decidim_organization_id"], name: "index_decidim_processes_on_decidim_organization_id", using: :btree
   end
@@ -290,6 +294,7 @@ ActiveRecord::Schema.define(version: 20170227154544) do
     t.jsonb    "answer"
     t.integer  "report_count",          default: 0
     t.datetime "hidden_at"
+    t.string   "reference",                         null: false
     t.index ["body"], name: "decidim_proposals_proposal_body_search", using: :btree
     t.index ["created_at"], name: "index_decidim_proposals_proposals_on_created_at", using: :btree
     t.index ["decidim_author_id"], name: "index_decidim_proposals_proposals_on_decidim_author_id", using: :btree
@@ -321,6 +326,7 @@ ActiveRecord::Schema.define(version: 20170227154544) do
     t.integer  "decidim_category_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "reference",           null: false
     t.index ["decidim_category_id"], name: "index_decidim_results_results_on_decidim_category_id", using: :btree
     t.index ["decidim_feature_id"], name: "index_decidim_results_results_on_decidim_feature_id", using: :btree
     t.index ["decidim_scope_id"], name: "index_decidim_results_results_on_decidim_scope_id", using: :btree
