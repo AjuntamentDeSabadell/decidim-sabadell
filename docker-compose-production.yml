@@ -4,11 +4,13 @@ services:
     build:
       context: .
       args:
-        rails_env: development
+        rails_env: production
     volumes:
       - .:/code
     environment:
+      - FORCE_SSL=true
       - DATABASE_URL=postgres://postgres@pg:5432/decidim
+      - SECRET_KEY_BASE=$SECRET_KEY_BASE
     ports:
       - 3000:3000
     links:
