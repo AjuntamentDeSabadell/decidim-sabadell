@@ -21,4 +21,8 @@ RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 ADD . $APP_HOME
 
+ENV PASSENGER_NGINX_CONFIG_TEMPLATE /code/nginx.conf.erb
+ENV PASSENGER_LOG_FILE /dev/stdout
+ENV PASSENGER_MAX_POOL_SIZE=5
+
 CMD bundle exec rake db:migrate assets:precompile && bundle exec passenger start
