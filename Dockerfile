@@ -21,6 +21,4 @@ RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 ADD . $APP_HOME
 
-RUN bundle exec rake DATABASE_URL=postgresql://user:pass@127.0.0.1/dbname assets:precompile
-
-CMD ["bundle", "exec", "rails", "s", "-b0.0.0.0"]
+CMD bundle exec rake db:migrate assets:precompile && bundle exec passenger start
