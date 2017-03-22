@@ -21,4 +21,4 @@ RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 ADD . $APP_HOME
 
-CMD bundle exec rake db:migrate assets:precompile && bundle exec passenger start -p ${PORT:-3000} --max-pool-size ${WEB_CONCURRENCY:-5}
+CMD bundle exec rake db:migrate assets:precompile && bundle exec passenger start
