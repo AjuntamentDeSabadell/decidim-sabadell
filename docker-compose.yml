@@ -10,25 +10,27 @@ services:
     environment:
       - PASSENGER_PORT=3000
       - FORCE_SSL=${FORCE_SSL}
-      - DATABASE_URL=postgres://postgres@pg:5432/decidim
+      - DATABASE_URL=postgres://postgres@postgres:5432/decidim_sabadell
       - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     ports:
       - $PORT:3000
     links:
-      - pg
+      - postgres
       - redis
-  pg:
+    command: ["./wait-for-postgres.sh", "postgres", "--", "./run-app.sh"]
+  postgres:
     image: postgres
     environment:
       - POSTGRES_PASSWORD=
       - POSTGRES_USERNAME=postgres
+      - POSTGRES_DB=decidim_sabadell
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
   redis:
     image: redis
     volumes:
       - redis-data:/data
 volumes:
-  pg-data: {}
+  postgres-data: {}
   redis-data: {}
 

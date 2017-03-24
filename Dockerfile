@@ -13,6 +13,8 @@ RUN apt-get update
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash && \
     apt-get install -y nodejs
 
+RUN apt-get install -y postgresql postgresql-client
+
 ADD Gemfile /tmp/Gemfile
 ADD Gemfile.lock /tmp/Gemfile.lock
 RUN cd /tmp && bundle install
