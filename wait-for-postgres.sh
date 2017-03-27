@@ -13,4 +13,3 @@ until psql -h "$host" -U "postgres" -c '\l'; do
 done
 
 >&2 echo "Postgres is up - executing command"
-exec $cmd
