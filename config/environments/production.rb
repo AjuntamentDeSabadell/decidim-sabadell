@@ -82,6 +82,8 @@ Rails.application.configure do
     :openssl_verify_mode => 'none'
   }
 
+  config.cache_store = :dalli_store, ENV["MEMCACHED_HOST"], { :namespace => "decidim-sabadell", :expires_in => 30.days, :compress => true }
+
   if Rails.application.secrets.sendgrid
     config.action_mailer.default_options = {
       "X-SMTPAPI" => {

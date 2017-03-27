@@ -23,8 +23,7 @@ end
 group :production do
   gem "passenger"
   gem "rails_12factor"
-  gem 'fog-aws'
-  gem 'rails_12factor'
+  gem 'dalli'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
