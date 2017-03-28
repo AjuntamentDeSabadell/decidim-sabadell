@@ -15,6 +15,8 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | bash && \
 
 RUN apt-get install -y postgresql postgresql-client
 
+RUN gem install bundler -v "1.14.6"
+
 ADD Gemfile /tmp/Gemfile
 ADD Gemfile.lock /tmp/Gemfile.lock
 RUN cd /tmp && bundle install
