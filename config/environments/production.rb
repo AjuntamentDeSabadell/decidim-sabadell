@@ -72,6 +72,7 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address        => Rails.application.secrets.smtp_address,
     :port           => Rails.application.secrets.smtp_port,
@@ -84,17 +85,6 @@ Rails.application.configure do
   }
 
   config.cache_store = :dalli_store, ENV["MEMCACHED_HOST"], { :namespace => "decidim-sabadell", :expires_in => 30.days, :compress => true }
-
-  if Rails.application.secrets.sendgrid
-    config.action_mailer.default_options = {
-      "X-SMTPAPI" => {
-        filters:  {
-          clicktrack: { settings: { enable: 0 } },
-          opentrack:  { settings: { enable: 0 } }
-        }
-      }.to_json
-    }
-  end
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
