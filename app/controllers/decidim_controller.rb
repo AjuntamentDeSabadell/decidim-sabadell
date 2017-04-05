@@ -1,2 +1,2 @@
-class DecidimController < ActionController::Base
+class DecidimController < ApplicationController
 end
