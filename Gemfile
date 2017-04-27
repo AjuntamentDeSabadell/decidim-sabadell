@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby '2.4.0'
 
-gem "decidim", "0.0.7"
+gem "decidim", "0.0.8.1"
 
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
@@ -17,7 +17,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker', '~> 1.7.3'
-  gem "decidim-dev"
+  gem "decidim-dev", "0.0.8.1"
 end
 
 group :production do
