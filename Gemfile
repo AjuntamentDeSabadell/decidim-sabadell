@@ -1,14 +1,15 @@
 source "https://rubygems.org"
 
-ruby '2.4.0'
+ruby '2.4.1'
 
-gem "decidim", "0.0.8.1"
+gem "decidim", git: "https://github.com/AjuntamentdeBarcelona/decidim.git"
 
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem "decidim-dev", git: "https://github.com/AjuntamentdeBarcelona/decidim.git"  
 end
 
 group :development do
@@ -17,7 +18,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker', '~> 1.7.3'
-  gem "decidim-dev", "0.0.8.1"
 end
 
 group :production do
