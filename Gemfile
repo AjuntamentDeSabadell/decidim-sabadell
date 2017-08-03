@@ -2,14 +2,14 @@ source "https://rubygems.org"
 
 ruby '2.4.1'
 
-gem "decidim", "~> 0.4.0"
+gem "decidim"
 
 gem 'puma'
 gem 'uglifier'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem "decidim-dev", "~> 0.4.0"
+  gem "decidim-dev"
 end
 
 group :development do

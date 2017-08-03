@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   if Rails.env.production?
     require 'sidekiq/web'
-    authenticate :user, lambda { |u| u.roles.include?("admin") } do
+    authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end
   end
