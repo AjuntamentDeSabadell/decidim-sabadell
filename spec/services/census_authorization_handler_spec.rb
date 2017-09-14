@@ -7,12 +7,10 @@ describe CensusAuthorizationHandler do
   let(:subject) { handler }
   let(:handler) { described_class.from_params(params) }
   let(:document_number) { "12345678A" }
-  let(:document_type) { :nie }
   let(:date_of_birth) { Date.civil(1987, 9, 17) }
   let(:params) do
     {
       document_number: document_number,
-      document_type: document_type,
       date_of_birth: date_of_birth
     }
   end
@@ -23,7 +21,7 @@ describe CensusAuthorizationHandler do
     before do
       allow(handler)
         .to receive(:response)
-        .and_return(Nokogiri::XML("<existeix>true</existeix>").remove_namespaces!)
+        .and_return(Nokogiri::XML("<DecidimInfo><DescripcioResultat>Correcte</DescripcioResultat></DecidimInfo>").remove_namespaces!)
     end
 
     describe "document_number" do
@@ -35,20 +33,6 @@ describe CensusAuthorizationHandler do
 
       context "with an invalid format" do
         let(:document_number) { "(╯°□°）╯︵ ┻━┻" }
-
-        it { is_expected.not_to be_valid }
-      end
-    end
-
-    describe "document_type" do
-      context "when it isn't present" do
-        let(:document_type) { nil }
-
-        it { is_expected.not_to be_valid }
-      end
-
-      context "when it has a weird value" do
-        let(:document_type) { :driver_license }
 
         it { is_expected.not_to be_valid }
       end
@@ -126,16 +110,6 @@ describe CensusAuthorizationHandler do
         allow(handler)
           .to receive(:response)
           .and_return(Nokogiri::XML("Messed up response!").remove_namespaces!)
-      end
-
-      it { is_expected.to_not be_valid }
-    end
-
-    context "with an invalid response code" do
-      before do
-        allow(handler)
-          .to receive(:response)
-          .and_return(Nokogiri::XML("<codiRetorn>02</codiRetorn>").remove_namespaces!)
       end
 
       it { is_expected.to_not be_valid }
