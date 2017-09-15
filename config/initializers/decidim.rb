@@ -3,12 +3,11 @@
 Decidim.configure do |config|
   config.application_name = "Decidim Sabadell"
   config.mailer_sender    = "Decidim Sabadell <decidim@sabadell.cat>"
-  config.authorization_handlers = []
+  config.authorization_handlers = [CensusAuthorizationHandler]
 
   # Uncomment this lines to set your preferred locales
   config.available_locales = %i{ca es}
   config.default_locale = :ca
-  config.authorization_handlers = [CensusAuthorizationHandler]
 
   # Geocoder configuration
   config.geocoder = {
@@ -18,5 +17,5 @@ Decidim.configure do |config|
   }
 
   # Currency unit
-  # config.currency_unit = "€"
+  config.currency_unit = "€"
 end
