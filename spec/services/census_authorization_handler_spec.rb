@@ -21,7 +21,7 @@ describe CensusAuthorizationHandler do
     before do
       allow(handler)
         .to receive(:response)
-        .and_return(Nokogiri::XML("<DecidimInfo><DescripcioResultat>Correcte</DescripcioResultat></DecidimInfo>").remove_namespaces!)
+        .and_return(Nokogiri::XML("<DecidimInfo><NumRegistres>1</NumRegistres></DecidimInfo>").remove_namespaces!)
     end
 
     describe "document_number" do
@@ -109,7 +109,7 @@ describe CensusAuthorizationHandler do
       before do
         allow(handler)
           .to receive(:response)
-          .and_return(Nokogiri::XML("Messed up response!").remove_namespaces!)
+          .and_return(Nokogiri::XML("<DecidimInfo><NumRegistres>0</NumRegistres></DecidimInfo>").remove_namespaces!)
       end
 
       it { is_expected.to_not be_valid }

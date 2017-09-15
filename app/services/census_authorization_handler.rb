@@ -35,7 +35,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   end
 
   def unique_id
-    Digest::MD5.digest "#{document_number}#{sanitized_date_of_birth}"
+    Digest::MD5.hexdigest("#{document_number}#{sanitized_date_of_birth}").upcase
   end
 
   private
@@ -47,7 +47,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   def document_valid
     return nil if response.blank?
 
-    errors.add(:document_number, I18n.t("census_authorization_handler.invalid_document")) unless response.xpath("/DecidimInfo/DescripcioResultat").text == "Correcte"
+    errors.add(:document_number, I18n.t("census_authorization_handler.invalid_document")) unless response.xpath("//NumRegistres").children.text == "1"
   end
 
   def response
@@ -61,7 +61,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
       request.body = request_body
     end
 
-    @response ||= Nokogiri::XML(response.body).remove_namespaces!
+    @response ||= Nokogiri::XML(HTMLEntities.new.decode response.body).remove_namespaces!
   end
 
   def request_body
