@@ -1,0 +1,45 @@
+es:
+  census_authorization_handler:
+    age_under_16: Tienes que ser mayor de 16 años para verificarte
+    invalid_document: Número de documento incorrecto
+  activemodel:
+    attributes:
+      census_authorization_handler:
+        document_number: Número de documento
+        document_type: Tipo de documento
+        postal_code: Código postal
+        date_of_birth: Fecha de nacimiento
+  census_authorization:
+    form:
+      scope_prompt: Por favor, selecciona tu distrito
+      date_select:
+        day: "Día"
+        month: "Mes"
+        year: "Año"
+  decidim:
+    authorization_handlers:
+      census_authorization_handler:
+        name: El padrón
+        fields:
+          document_number: Número de documento
+          document_type: Tipo de documento
+          postal_code: Código postal
+          date_of_birth: Fecha de nacimiento
+          scope_id: Distrito
+    census_authorization_handler:
+      document_types:
+        dni: DNI
+        nie: NIE
+        passport: Pasaporte
+        community_dni: DNI comunitario
+    meetings:
+      meetings:
+        filters:
+          scopes: Barrio
+    participatory_processes:
+      scopes:
+        global: Toda la ciudad
+    proposals:
+      proposals:
+        filters:
+          scopes: Barrio
