@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby '2.4.1'
 
-gem "decidim"
+gem "decidim", "~> 0.6.4"
 
 gem 'puma'
 gem 'uglifier'
