@@ -14,7 +14,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   validates :document_number, format: { with: /\A[A-z0-9]*\z/ }, presence: true
 
   validate :document_valid
-  validate :over_16
+  validate :check_age
 
   def self.from_params(params, additional_params = {})
     instance = super(params, additional_params)
@@ -78,8 +78,8 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
 EOS
   end
 
-  def over_16
-    errors.add(:date_of_birth, I18n.t("census_authorization_handler.age_under_16")) unless age && age >= 16
+  def check_age
+    errors.add(:date_of_birth, I18n.t("census_authorization_handler.age_under_14")) unless age && age >= 14
   end
 
   def age
