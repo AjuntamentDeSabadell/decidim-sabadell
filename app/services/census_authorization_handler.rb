@@ -6,6 +6,7 @@ require "digest/md5"
 # to verify the citizen's residence.
 class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   include ActionView::Helpers::SanitizeHelper
+  include Virtus::Multiparams
 
   attribute :document_number, String
   attribute :date_of_birth, Date
@@ -15,24 +16,6 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
 
   validate :document_valid
   validate :check_age
-
-  def self.from_params(params, additional_params = {})
-    instance = super(params, additional_params)
-
-    params_hash = hash_from(params)
-
-    if params_hash["date_of_birth(1i)"]
-      date = Date.civil(
-        params["date_of_birth(1i)"].to_i,
-        params["date_of_birth(2i)"].to_i,
-        params["date_of_birth(3i)"].to_i
-      )
-
-      instance.date_of_birth = date
-    end
-
-    instance
-  end
 
   def unique_id
     Digest::MD5.hexdigest("#{document_number}#{sanitized_date_of_birth}").upcase
