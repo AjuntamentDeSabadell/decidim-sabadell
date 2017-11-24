@@ -43,3 +43,10 @@ ca:
       proposals:
         filters:
           scopes: Barri
+        vote_button:
+          already_voted: Ja li has donat suport
+        voting_rules:
+          title: "La selecció de propostes es regeix per les següents normes:"
+          vote_limit:
+            description: "Pots donar suport a %{limit} propostes."
+            votes: Suports
