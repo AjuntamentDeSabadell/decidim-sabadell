@@ -26,6 +26,7 @@ group :production do
   gem "rails_12factor"
   gem 'dalli'
   gem 'sidekiq'
+  gem "sentry-raven"
 end
 
 group :test do

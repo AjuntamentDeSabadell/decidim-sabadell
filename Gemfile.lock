@@ -506,6 +506,8 @@ GEM
     searchlight (4.1.0)
     select2-rails (4.0.3)
       thor (~> 0.14)
+    sentry-raven (2.7.1)
+      faraday (>= 0.7.6, < 1.0)
     sidekiq (5.0.4)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -588,6 +590,7 @@ DEPENDENCIES
   puma
   rails_12factor
   rspec-rails
+  sentry-raven
   sidekiq
   spring
   spring-watcher-listen
