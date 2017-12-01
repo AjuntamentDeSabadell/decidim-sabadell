@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    working_directory: /app
+    docker:
+      - image: docker:17.09.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Login to docker
+          command: |
+            docker login --username=$DOCKER_USER --password=$DOCKER_PASS
+      - run:
+          name: Pulling docker image
+          command: |
+            docker pull sabadell/decidim-sabadell || true
+      - run:
+          name: Build image
+          command: |
+            docker build -t sabadell/decidim-sabadell:latest --cache-from sabadell/decidim-sabadell:latest .
+      - run:
+          name: Push docker hub image
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker push sabadell/decidim-sabadell:latest
+            fi
