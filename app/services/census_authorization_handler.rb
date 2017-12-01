@@ -44,7 +44,8 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
       request.body = request_body
     end
 
-    @response ||= Nokogiri::XML(HTMLEntities.new.decode response.body).remove_namespaces!
+    response_body = HTMLEntities.new.decode response.body.force_encoding("ISO-8859-1")
+    @response ||= Nokogiri::XML(response_body).remove_namespaces!
   end
 
   def request_body
