@@ -3,7 +3,6 @@
 Decidim.configure do |config|
   config.application_name = "Decidim Sabadell"
   config.mailer_sender    = "Decidim Sabadell <decidim@sabadell.cat>"
-  config.authorization_handlers = ["CensusAuthorizationHandler"]
 
   # Uncomment this lines to set your preferred locales
   config.available_locales = %i{ca es}
@@ -18,4 +17,8 @@ Decidim.configure do |config|
 
   # Currency unit
   config.currency_unit = "€"
+end
+
+Decidim::Verifications.register_workflow(:census_authorization_handler) do |auth|
+  auth.form = "CensusAuthorizationHandler"
 end
