@@ -19,6 +19,7 @@ es:
   decidim:
     authorization_handlers:
       census_authorization_handler:
+        explanation: Verifícate con el padrón
         name: El padrón
         fields:
           document_number: Número de documento
