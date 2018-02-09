@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-ruby '2.4.2'
+ruby '2.5.0'
 
-gem "decidim", "~> 0.8.2"
+gem "decidim", "~> 0.9.2"
 gem "decidim-assemblies"
 gem "virtus-multiparams"
 
