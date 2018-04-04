@@ -2,8 +2,7 @@ source "https://rubygems.org"
 
 ruby '2.5.0'
 
-gem "decidim", "~> 0.9.2"
-gem "decidim-assemblies"
+gem "decidim", "~> 0.10.0"
 gem "virtus-multiparams"
 
 gem 'puma'
