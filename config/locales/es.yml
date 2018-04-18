@@ -78,14 +78,14 @@ es:
         assemblies: Consejos, Mesas o Órganos de participación
     assemblies:
       index:
-        title: Consejos, Mesas y Órganos de Participación
+        title: Espacios de Participación
       pages:
         home:
           highlighted_assemblies:
-            active_assemblies: Consejos, Mesas y Órganos de Participación activos
-            see_all_assemblies: Ver todos los Consejos, Mesas y Órganos de Participación
+            active_assemblies: Espacios de Participación activos
+            see_all_assemblies: Ver todos los Espacios de Participación
       statistics:
-        assemblies_count: Consejos, Mesas y Órganos de Participación
+        assemblies_count: Espacios de Participación
     authorization_handlers:
       census_authorization_handler:
         explanation: Verifícate con el padrón
@@ -106,11 +106,11 @@ es:
       decidim:
         assemblies:
           index:
-            promoted_assemblies: Consejos, Mesas y Órganos de Participación destacades
+            promoted_assemblies: Espacios de Participación destacades
           order_by_assemblies:
             assemblies:
-              one: "%{count} Consejos, Mesas y Órganos de Participación"
-              other: "%{count} Consejos, Mesas y Órganos de Participación"
+              one: "%{count} Espacios de Participación"
+              other: "%{count} Espacios de Participación"
         assembly_header:
           assembly_menu_item: El Espacio de de Participación
     meetings:
@@ -118,7 +118,7 @@ es:
         filters:
           scopes: Barrio
     menu:
-      assemblies: Consejos, Mesas y Órganos de Participación
+      assemblies: Espacios de Participación
     participatory_processes:
       scopes:
         global: Toda la ciudad

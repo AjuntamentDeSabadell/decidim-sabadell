@@ -69,7 +69,7 @@ ca:
           success: L'usuari s'ha actualitzat correctament per a aquest Consell, Taula
             o Òrgan de Participació.
       menu:
-        assemblies: Consells, Taules i Òrgans de Participació
+        assemblies: Espais de Participació
         assemblies_submenu:
           assembly_admins: Usuaris del Espai de Participació
       models:
@@ -78,19 +78,19 @@ ca:
         assembly_user_role:
           name: Usuari del Espai de Participació
       titles:
-        assemblies: Consells, Taules i Òrgans de Participació
+        assemblies: Espais de Participació
     assemblies:
       index:
-        title: Consells, Taules i Òrgans de Participació
+        title: Espais de Participació
       pages:
         home:
           highlighted_assemblies:
-            active_assemblies: Consells, Taules i Òrgans de Participació actives
-            see_all_assemblies: Veure tots els Consells, Taules i Òrgans de Participació
+            active_assemblies: Espais de Participació actives
+            see_all_assemblies: Veure tots els Espais de Participació
       statistics:
-        assemblies_count: Consells, Taules i Òrgans de Participació
+        assemblies_count: Espais de Participació
     menu:
-      assemblies: Consells, Taules i Òrgans de Participació
+      assemblies: Espais de Participació
   layouts:
     authorization_handlers:
       census_authorization_handler:
@@ -111,11 +111,11 @@ ca:
     decidim:
       assemblies:
         index:
-          promoted_assemblies: Consells, Taules i Òrgans de Participació destacades
+          promoted_assemblies: Espais de Participació destacades
         order_by_assemblies:
           assemblies:
-            one: "%{count} Consells, Taules i Òrgans de Participació"
-            other: "%{count} Consells, Taules i Òrgans de Participació"
+            one: "%{count} Espais de Participació"
+            other: "%{count} Espais de Participació"
       assembly_header:
         assembly_menu_item: El Espai de Participació
     meetings:
