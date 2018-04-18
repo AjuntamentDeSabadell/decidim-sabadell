@@ -1,42 +1,124 @@
+---
 es:
-  census_authorization_handler:
-    age_under_14: Tienes que ser mayor de 14 años para verificarte
-    invalid_document: Número de documento incorrecto
   activemodel:
     attributes:
       census_authorization_handler:
+        date_of_birth: Fecha de nacimiento
         document_number: Número de documento
         document_type: Tipo de documento
         postal_code: Código postal
-        date_of_birth: Fecha de nacimiento
   census_authorization:
     form:
-      scope_prompt: Por favor, selecciona tu distrito
       date_select:
-        day: "Día"
-        month: "Mes"
-        year: "Año"
+        day: Día
+        month: Mes
+        year: Año
+      scope_prompt: Por favor, selecciona tu distrito
+  census_authorization_handler:
+    age_under_14: Tienes que ser mayor de 14 años para verificarte
+    invalid_document: Número de documento incorrecto
   decidim:
+    admin:
+      assemblies:
+        create:
+          error: Se produjo un error al crear un nuevo Espacio de de Participación.
+          success: Espacio de de Participación creado correctamente.
+        destroy:
+          success: Espacio de de Participación destruido correctamente.
+        new:
+          title: Nuevo Espacio de de Participación
+        update:
+          error: Se ha producido un error al actualizar este Espacio de
+            de Participación.
+          success: El Espacio de de Participación se ha actualizado correctamente.
+      assemblies_copies:
+        create:
+          error: Se produjo un error al duplicar este Espacio de de Participación.
+          success: Espacio de de Participación duplicado correctamente.
+      assembly_copies:
+        new:
+          title: Duplicar Espacio de de Participación
+      assembly_publications:
+        create:
+          error: Se produjo un error al publicar este Espacio de de Participación.
+          success: Espacio de de Participación publicado con éxito.
+        destroy:
+          error: Se produjo un error al despublicar este Espacio de de
+            Participación.
+          success: Espacio de de Participación despublicado con éxito.
+      assembly_user_roles:
+        create:
+          error: Se ha producido un error al agregar un usuario para este Consejo,
+            Mesa o Órgano de Participación.
+          success: Usuario creado con éxito para este Espacio de de Participación.
+        destroy:
+          success: Usuario destruido con éxito para este Espacio de de
+            Participación.
+        edit:
+          title: Actualizar el usuario del Espacio de de Participación.
+        index:
+          assembly_admins_title: Usuarios del Espacio de de Participación
+        new:
+          title: Nuevo usuario del Espacio de de Participación.
+        update:
+          error: Ha habido un error al actualizar un usuario para este Consejo, Mesa
+            o Órgano de Participación.
+          success: Usuario actualizado con éxito para este Espacio de
+            de Participación.
+      menu:
+        assemblies: Consejos, Mesas o Órganos de participación
+        assemblies_submenu:
+          assembly_admins: Usuarios del Espacio de de Participación
+      models:
+        assembly:
+          name: Espacio de de Participación
+        assembly_user_role:
+          name: Usuario del Espacio de de Participación
+      titles:
+        assemblies: Consejos, Mesas o Órganos de participación
+    assemblies:
+      index:
+        title: Consejos, Mesas y Órganos de Participación
+      pages:
+        home:
+          highlighted_assemblies:
+            active_assemblies: Consejos, Mesas y Órganos de Participación activos
+            see_all_assemblies: Ver todos los Consejos, Mesas y Órganos de Participación
+      statistics:
+        assemblies_count: Consejos, Mesas y Órganos de Participación
     authorization_handlers:
       census_authorization_handler:
         explanation: Verifícate con el padrón
-        name: El padrón
         fields:
+          date_of_birth: Fecha de nacimiento
           document_number: Número de documento
           document_type: Tipo de documento
           postal_code: Código postal
-          date_of_birth: Fecha de nacimiento
           scope_id: Distrito
+        name: El padrón
     census_authorization_handler:
       document_types:
+        community_dni: DNI comunitario
         dni: DNI
         nie: NIE
         passport: Pasaporte
-        community_dni: DNI comunitario
+    layouts:
+      decidim:
+        assemblies:
+          index:
+            promoted_assemblies: Consejos, Mesas y Órganos de Participación destacades
+          order_by_assemblies:
+            assemblies:
+              one: "%{count} Consejos, Mesas y Órganos de Participación"
+              other: "%{count} Consejos, Mesas y Órganos de Participación"
+        assembly_header:
+          assembly_menu_item: El Espacio de de Participación
     meetings:
       meetings:
         filters:
           scopes: Barrio
+    menu:
+      assemblies: Consejos, Mesas y Órganos de Participación
     participatory_processes:
       scopes:
         global: Toda la ciudad
