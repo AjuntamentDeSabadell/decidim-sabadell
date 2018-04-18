@@ -28,8 +28,7 @@ es:
         new:
           title: Nuevo Espacio de de Participación
         update:
-          error: Se ha producido un error al actualizar este Espacio de
-            de Participación.
+          error: Se ha producido un error al actualizar este Espacio de de Participación.
           success: El Espacio de de Participación se ha actualizado correctamente.
       assemblies_copies:
         create:
@@ -43,8 +42,7 @@ es:
           error: Se produjo un error al publicar este Espacio de de Participación.
           success: Espacio de de Participación publicado con éxito.
         destroy:
-          error: Se produjo un error al despublicar este Espacio de de
-            Participación.
+          error: Se produjo un error al despublicar este Espacio de de Participación.
           success: Espacio de de Participación despublicado con éxito.
       assembly_user_roles:
         create:
@@ -52,8 +50,7 @@ es:
             Mesa o Órgano de Participación.
           success: Usuario creado con éxito para este Espacio de de Participación.
         destroy:
-          success: Usuario destruido con éxito para este Espacio de de
-            Participación.
+          success: Usuario destruido con éxito para este Espacio de de Participación.
         edit:
           title: Actualizar el usuario del Espacio de de Participación.
         index:
@@ -63,8 +60,7 @@ es:
         update:
           error: Ha habido un error al actualizar un usuario para este Consejo, Mesa
             o Órgano de Participación.
-          success: Usuario actualizado con éxito para este Espacio de
-            de Participación.
+          success: Usuario actualizado con éxito para este Espacio de de Participación.
       menu:
         assemblies: Consejos, Mesas o Órganos de participación
         assemblies_submenu:
