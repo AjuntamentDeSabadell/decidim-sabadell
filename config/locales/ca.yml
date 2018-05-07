@@ -24,16 +24,16 @@ ca:
           error: S'ha produït un error en crear un nou Espai de Participació.
           success: Espai de Participació creat correctament.
         destroy:
-          success: El Espai de Participació s'ha eliminat amb èxit.
+          success: L'espai de Participació s'ha eliminat amb èxit.
         new:
           title: Nou Espai de Participació
         update:
           error: S'ha produït un error en actualitzar aquest Espai de Participació.
-          success: El Espai de Participació s'ha actualitzat correctament.
+          success: L'espai de Participació s'ha actualitzat correctament.
       assemblies_copies:
         create:
           error: S'ha produït un error en duplicar aquest Espai de Participació.
-          success: El Espai de Participació s'ha duplicat correctament.
+          success: L'espai de Participació s'ha duplicat correctament.
       assembly_copies:
         new:
           title: Espai de Participació duplicat
@@ -53,11 +53,11 @@ ca:
         destroy:
           success: S'ha destruït l'usuari amb èxit per a aquest Espai de Participació.
         edit:
-          title: Actualitza l'usuari del Espai de Participació.
+          title: Actualitza l'usuari dL'espai de Participació.
         index:
-          assembly_admins_title: Usuaris del Espai de Participació
+          assembly_admins_title: Usuaris dL'espai de Participació
         new:
-          title: Nou usuari del Espai de Participació.
+          title: Nou usuari dL'espai de Participació.
         update:
           error: S'ha produït un error en l'actualització d'un usuari per a aquest
             Espai de Participació.
@@ -66,12 +66,12 @@ ca:
       menu:
         assemblies: Espais de Participació
         assemblies_submenu:
-          assembly_admins: Usuaris del Espai de Participació
+          assembly_admins: Usuaris dL'espai de Participació
       models:
         assembly:
           name: Espai de Participació
         assembly_user_role:
-          name: Usuari del Espai de Participació
+          name: Usuari dL'espai de Participació
       titles:
         assemblies: Espais de Participació
     assemblies:
@@ -112,7 +112,7 @@ ca:
             one: "%{count} Espais de Participació"
             other: "%{count} Espais de Participació"
       assembly_header:
-        assembly_menu_item: El Espai de Participació
+        assembly_menu_item: L'espai de Participació
     meetings:
       meetings:
         filters:
