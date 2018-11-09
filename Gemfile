@@ -1,38 +1,37 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 ruby '2.5.3'
 
-DECIDIM_VERSION = "~> 0.14.4"
+DECIDIM_VERSION = '~> 0.14.4'.freeze
 
-gem "decidim", DECIDIM_VERSION
-gem "virtus-multiparams"
+gem 'decidim', DECIDIM_VERSION
+gem 'virtus-multiparams'
 
 gem 'puma'
 gem 'uglifier'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem "decidim-dev", DECIDIM_VERSION
+  gem 'decidim-dev', DECIDIM_VERSION
 end
 
 group :development do
+  gem 'faker'
+  gem 'letter_opener_web', '~> 1.3.0'
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
-  gem 'faker'
 end
 
 group :production do
-  gem "passenger"
-  gem "rails_12factor"
   gem 'dalli'
+  gem 'sentry-raven'
   gem 'sidekiq'
-  gem "sentry-raven"
 end
 
 group :test do
-  gem "rspec-rails"
-  gem "database_cleaner"
+  gem 'database_cleaner'
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

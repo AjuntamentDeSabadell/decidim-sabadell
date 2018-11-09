@@ -2,12 +2,13 @@ version: 2
 
 defaults: &defaults
   docker:
-    - image: decidim/decidim:0.9-test
+    - image: decidim/decidim:0.14.4-test
       environment:
         BUNDLE_GEMFILE: /app/Gemfile
         SIMPLECOV: true
         DATABASE_USERNAME: postgres
         FAIL_FAST: true
+        APPLICATION_VERSION: 0.14.4
     - image: postgres
       environment:
         POSTGRES_USER: postgres
@@ -52,16 +53,16 @@ jobs:
       - run:
           name: Pulling docker image
           command: |
-            docker pull sabadell/decidim-sabadell || true
+            docker pull ajsabadell/decidim-sabadell || true
       - run:
           name: Build image
           command: |
-            docker build -f Dockerfile -t sabadell/decidim-sabadell --cache-from sabadell/decidim-sabadell .
+            docker build -f Dockerfile -t ajsabadell/decidim-sabadell --cache-from ajsabadell/decidim-sabadell .
       - run:
           name: Push image
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker push sabadell/decidim-sabadell
+              docker push "ajsabadell/decidim-sabadell:$APPLICATION_VERSION"
             fi
 
 workflows:

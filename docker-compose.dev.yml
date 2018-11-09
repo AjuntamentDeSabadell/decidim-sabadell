@@ -1,27 +1,23 @@
 version: '3'
 services:
   app:
-    entrypoint: ["./docker-entrypoint.sh"]
+    entrypoint: [""]
     command: bundle exec rails server -p 3000 -b 0.0.0.0
     environment:
-      - 'DATABASE_URL=postgres://postgres@postgres:5432/decidim_sabadell'
-      - FORCE_SSL=yes
+      - FORCE_SSL=false
       - MEMCACHED_HOST=memcached
-      - POSTGRES_HOST=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_USERNAME=postgres
       - 'REDIS_URL=redis://redis:6379/1'
-      - SECRET_KEY_BASE=CHANGE_THIS
-      - SMTP_ADDRESS=172.16.200.3
-      - SMTP_DOMAIN=sabadell.cat
-      - SMTP_PASSWORD=
-      - SMTP_PORT=25
-      - SMTP_USERNAME=
-      - VIRTUAL_HOST=decidim.sabadell.cat
+      - SECRET_KEY_BASE=c5df9a89aceb70a5c6af5267db174722e36c7a09a20042bfb107c4c335e20f9eb17f60dbc0f87748f070a1247bd2deada02c7f5f80ca7b425f300afecf0ede29
+      - VIRTUAL_HOST=decidim.sabadell.dev
       - GEOCODER_LOOKUP_APP_ID=CHANGE_THIS
       - GEOCODER_LOOKUP_APP_CODE=CHANGE_THIS
-    image: 'ajsabadell/decidim-sabadell:0.14.4'
+    image: 'ajsabadell/decidim-sabadell:dev'
     volumes:
-      - '/var/decidim/assets:/code/public/assets'
-      - '/var/decidim/uploads:/code/public/uploads'
+      - '.:/code'
+      - assets:/code/public/assets
+      - uploads:/code/public/uploads
     deploy:
       replicas: 1
       update_config:
@@ -31,28 +27,23 @@ services:
       labels:
         - com.df.notify=true
         - com.df.port=3000
-        - com.df.serviceDomain=decidim.sabadell.cat
+        - com.df.serviceDomain=decidim.sabadell.dev
   app-worker:
+    entrypoint: [""]
     command: bundle exec sidekiq -C config/sidekiq.yml
     environment:
-      - 'DATABASE_URL=postgres://postgres@postgres:5432/decidim_sabadell'
-      - FORCE_SSL=yes
+      - FORCE_SSL=false
       - MEMCACHED_HOST=memcached
-      - PASSENGER_PORT=3000
-      - POSTGRES_HOST=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_USERNAME=postgres
       - 'REDIS_URL=redis://redis:6379/1'
-      - SECRET_KEY_BASE=CHANGE_THIS
-      - SMTP_ADDRESS=172.16.200.3
-      - SMTP_DOMAIN=sabadell.cat
-      - SMTP_PASSWORD=
-      - SMTP_PORT=25
-      - SMTP_USERNAME=
+      - SECRET_KEY_BASE=c5df9a89aceb70a5c6af5267db174722e36c7a09a20042bfb107c4c335e20f9eb17f60dbc0f87748f070a1247bd2deada02c7f5f80ca7b425f300afecf0ede29
+      - VIRTUAL_HOST=decidim.sabadell.dev
       - GEOCODER_LOOKUP_APP_ID=CHANGE_THIS
       - GEOCODER_LOOKUP_APP_CODE=CHANGE_THIS
-    image: 'ajsabadell/decidim-sabadell:0.14.4'
+    image: 'ajsabadell/decidim-sabadell:dev'
     volumes:
-      - '/var/decidim/assets:/code/public/assets'
-      - '/var/decidim/uploads:/code/public/uploads'
+      - '.:/code'
     deploy:
       replicas: 1
       update_config:
@@ -75,8 +66,6 @@ services:
     environment:
       - LISTENER_ADDRESS=swarm-listener
       - MODE=swarm
-    volumes:
-      - /var/decidim/certs:/certs
     deploy:
       replicas: 1
       restart_policy:
@@ -94,29 +83,12 @@ services:
         condition: on-failure
   postgres:
     environment:
-      - POSTGRES_DB=decidim_sabadell
+      - POSTGRES_DB=decidim_sabadell-development
       - POSTGRES_PASSWORD=
       - POSTGRES_USERNAME=decidim
     image: 'postgres:9.6.10'
     volumes:
-      - /var/decidim/postgresql/data:/var/lib/postgresql/data
-    deploy:
-      replicas: 1
-      update_config:
-        parallelism: 1
-      restart_policy:
-        condition: on-failure
-  postgres-backups:
-    environment:
-      - MAX_BACKUPS=30
-      - POSTGRES_DB=decidim_sabadell
-      - POSTGRES_HOST=postgres
-      - 'POSTGRES_PASSWORD=""'
-      - POSTGRES_USER=postgres
-      - POSTGRES_PORT=5432
-    image: 'jmcarbo/docker-postgres-backup:latest'
-    volumes:
-      - '/var/decidim/backups:/backup'
+      - pgdata:/var/lib/postgresql/data
     deploy:
       replicas: 1
       update_config:
@@ -131,3 +103,8 @@ services:
         parallelism: 1
       restart_policy:
         condition: on-failure
+
+volumes:
+  pgdata:
+  assets:
+  uploads:

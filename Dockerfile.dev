@@ -1,0 +1,13 @@
+FROM decidim/decidim:0.14.4
+LABEL maintainer="info@codegram.com"
+
+ENV RAILS_ENV=development
+ENV PORT=3000
+
+RUN apt-get install -y postgresql-client
+
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+COPY . .
+RUN bundle install
+RUN bundle exec rake assets:precompile
