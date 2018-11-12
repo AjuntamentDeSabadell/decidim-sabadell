@@ -9,16 +9,16 @@ services:
       - MEMCACHED_HOST=memcached
       - POSTGRES_HOST=postgres
       - 'REDIS_URL=redis://redis:6379/1'
-      - SECRET_KEY_BASE=CHANGE_THIS
-      - SMTP_ADDRESS=172.16.200.3
-      - SMTP_DOMAIN=sabadell.cat
-      - SMTP_PASSWORD=
-      - SMTP_PORT=25
-      - SMTP_USERNAME=
-      - VIRTUAL_HOST=decidim.sabadell.cat
-      - GEOCODER_LOOKUP_APP_ID=CHANGE_THIS
-      - GEOCODER_LOOKUP_APP_CODE=CHANGE_THIS
-    image: 'ajsabadell/decidim-sabadell:0.14.4'
+      - SECRET_KEY_BASE=SECRET_KEY_BASE_VALUE
+      - SMTP_ADDRESS=SMTP_ADDRESS_VALUE
+      - SMTP_DOMAIN=SMTP_DOMAIN_VALUE
+      - SMTP_PASSWORD=SMTP_PASSWORD_VALUE
+      - SMTP_PORT=SMTP_PORT_VALUE
+      - SMTP_USERNAME=SMTP_USERNAME_VALUE
+      - VIRTUAL_HOST=VIRTUAL_HOST_VALUE
+      - GEOCODER_LOOKUP_APP_ID=GEOCODER_LOOKUP_APP_ID_VALUE
+      - GEOCODER_LOOKUP_APP_CODE=GEOCODER_LOOKUP_APP_CODE_VALUE
+    image: 'ajsabadell/decidim-sabadell:DOCKER_IMAGE_TAG_VALUE'
     volumes:
       - '/var/decidim/assets:/code/public/assets'
       - '/var/decidim/uploads:/code/public/uploads'
@@ -38,18 +38,17 @@ services:
       - 'DATABASE_URL=postgres://postgres@postgres:5432/decidim_sabadell'
       - FORCE_SSL=yes
       - MEMCACHED_HOST=memcached
-      - PASSENGER_PORT=3000
       - POSTGRES_HOST=postgres
       - 'REDIS_URL=redis://redis:6379/1'
-      - SECRET_KEY_BASE=CHANGE_THIS
-      - SMTP_ADDRESS=172.16.200.3
-      - SMTP_DOMAIN=sabadell.cat
-      - SMTP_PASSWORD=
-      - SMTP_PORT=25
-      - SMTP_USERNAME=
-      - GEOCODER_LOOKUP_APP_ID=CHANGE_THIS
-      - GEOCODER_LOOKUP_APP_CODE=CHANGE_THIS
-    image: 'ajsabadell/decidim-sabadell:0.14.4'
+      - SECRET_KEY_BASE=SECRET_KEY_BASE_VALUE
+      - SMTP_ADDRESS=SMTP_ADDRESS_VALUE
+      - SMTP_DOMAIN=SMTP_DOMAIN_VALUE
+      - SMTP_PASSWORD=SMTP_PASSWORD_VALUE
+      - SMTP_PORT=SMTP_PORT_VALUE
+      - SMTP_USERNAME=SMTP_USERNAME_VALUE
+      - GEOCODER_LOOKUP_APP_ID=GEOCODER_LOOKUP_APP_ID_VALUE
+      - GEOCODER_LOOKUP_APP_CODE=GEOCODER_LOOKUP_APP_CODE_VALUE
+    image: 'ajsabadell/decidim-sabadell:DOCKER_IMAGE_TAG_VALUE'
     volumes:
       - '/var/decidim/assets:/code/public/assets'
       - '/var/decidim/uploads:/code/public/uploads'
