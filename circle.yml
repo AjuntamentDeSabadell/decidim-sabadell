@@ -59,7 +59,7 @@ jobs:
       - run:
           name: Build image
           command: |
-            docker build -f Dockerfile -t ajsabadell/decidim-sabadell --cache-from ajsabadell/decidim-sabadell .
+            docker build -f Dockerfile -t ajsabadell/decidim-sabadell:$APPLICATION_VERSION --cache-from ajsabadell/decidim-sabadell .
       - run:
           name: Push image
           command: |
