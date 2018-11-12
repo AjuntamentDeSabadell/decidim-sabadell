@@ -1,5 +1,5 @@
-# coding: utf-8
 # frozen_string_literal: true
+
 require "rails_helper"
 require "decidim/dev/test/authorization_shared_examples"
 
@@ -11,7 +11,8 @@ describe CensusAuthorizationHandler do
   let(:params) do
     {
       document_number: document_number,
-      date_of_birth: date_of_birth
+      date_of_birth: date_of_birth,
+      user: create(:user)
     }
   end
 

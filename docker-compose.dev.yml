@@ -1,0 +1,110 @@
+version: '3'
+services:
+  app:
+    entrypoint: [""]
+    command: bundle exec rails server -p 3000 -b 0.0.0.0
+    environment:
+      - FORCE_SSL=false
+      - MEMCACHED_HOST=memcached
+      - DATABASE_HOST=postgres
+      - DATABASE_USERNAME=postgres
+      - 'REDIS_URL=redis://redis:6379/1'
+      - SECRET_KEY_BASE=c5df9a89aceb70a5c6af5267db174722e36c7a09a20042bfb107c4c335e20f9eb17f60dbc0f87748f070a1247bd2deada02c7f5f80ca7b425f300afecf0ede29
+      - VIRTUAL_HOST=decidim.sabadell.dev
+      - GEOCODER_LOOKUP_APP_ID=CHANGE_THIS
+      - GEOCODER_LOOKUP_APP_CODE=CHANGE_THIS
+    image: 'ajsabadell/decidim-sabadell:dev'
+    volumes:
+      - '.:/code'
+      - assets:/code/public/assets
+      - uploads:/code/public/uploads
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
+      labels:
+        - com.df.notify=true
+        - com.df.port=3000
+        - com.df.serviceDomain=decidim.sabadell.dev
+  app-worker:
+    entrypoint: [""]
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    environment:
+      - FORCE_SSL=false
+      - MEMCACHED_HOST=memcached
+      - DATABASE_HOST=postgres
+      - DATABASE_USERNAME=postgres
+      - 'REDIS_URL=redis://redis:6379/1'
+      - SECRET_KEY_BASE=c5df9a89aceb70a5c6af5267db174722e36c7a09a20042bfb107c4c335e20f9eb17f60dbc0f87748f070a1247bd2deada02c7f5f80ca7b425f300afecf0ede29
+      - VIRTUAL_HOST=decidim.sabadell.dev
+      - GEOCODER_LOOKUP_APP_ID=CHANGE_THIS
+      - GEOCODER_LOOKUP_APP_CODE=CHANGE_THIS
+    image: 'ajsabadell/decidim-sabadell:dev'
+    volumes:
+      - '.:/code'
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
+  memcached:
+    image: 'memcached:alpine'
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
+  proxy:
+    image: dockerflow/docker-flow-proxy
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - LISTENER_ADDRESS=swarm-listener
+      - MODE=swarm
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  swarm-listener:
+    image: dockerflow/docker-flow-swarm-listener
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DF_NOTIFY_CREATE_SERVICE_URL=http://proxy:8080/v1/docker-flow-proxy/reconfigure
+      - DF_NOTIFY_REMOVE_SERVICE_URL=http://proxy:8080/v1/docker-flow-proxy/remove
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  postgres:
+    environment:
+      - POSTGRES_DB=decidim_sabadell-development
+      - POSTGRES_PASSWORD=
+      - POSTGRES_USERNAME=decidim
+    image: 'postgres:9.6.10'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
+  redis:
+    image: 'redis:latest'
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
+
+volumes:
+  pgdata:
+  assets:
+  uploads:
