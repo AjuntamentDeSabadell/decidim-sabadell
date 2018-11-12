@@ -62,7 +62,7 @@ jobs:
           name: Push image
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker push "ajsabadell/decidim-sabadell:${APPLICATION_VERSION}"
+              docker push ajsabadell/decidim-sabadell:$APPLICATION_VERSION
             fi
 
 workflows:
