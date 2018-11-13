@@ -86,13 +86,13 @@ mkdir -p /var/decidim/assets /var/decidim/uploads /var/decidim/certs /var/decidi
 Move to the directory where you want to install the application:
 
 ```
-git clone https://github.com/AjuntamentDeSabadell/decidim-sabadell.git .
+git clone https://github.com/AjuntamentDeSabadell/decidim-sabadell.git /var/decidim/code
 ```
 
 The next step is to configure the variables that Docker Compose needs:
 
 ```
-cp config.example /var/decidim/.config
+cp /var/decidim/code/config.example /var/decidim/.config
 ```
 
 Update the `.config` file with your favourite editor and set the values for each variable (blank values are OK)
@@ -103,7 +103,7 @@ and keep the last blank line so the script that update the Docker Compose yml wo
 
 Then run `./update_docker_compose_config.sh /var/decidim/.config docker-compose.yml`
 
-Finally, copy your certificates to `/var/decidim/certs`.
+Finally, copy your pem certificates to `/var/decidim/certs`.
 
 The last step is to init the Docker swarm and deploy it:
 
@@ -133,8 +133,7 @@ To upgrade this application you first need to build a new Docker image and then 
 
 Once the new image is pushed to Docker Hub, you can update the production deployment:
 
-1. Update `/var/decidim/.config` to use the new image by changing the `DOCKER_IMAGE_TAG_VALUE` variable.
-1. Run `./update_docker_compose_config.sh /var/decidim/.config docker-compose.yml`
+1. Update the `docker-compose.yml` file with the new image tag (lines 21 and 51).
 1. Update the stack with `docker stack deploy --compose-file docker-compose.yml decidim-sabadell`.
 
 If there are any pending migrations they will be executed automatically.

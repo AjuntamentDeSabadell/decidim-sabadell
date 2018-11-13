@@ -4,6 +4,6 @@ IFS="="
 while read -r name value
 do
   echo "Content of $name is ${value//\"/}"
-  sed -i '' "s/$name/$value/g" "$DOCKER_COMPOSE_FILE"
+  sed -i "s/$name/$value/g" "$DOCKER_COMPOSE_FILE"
 
 done < $CONFIG_FILE
