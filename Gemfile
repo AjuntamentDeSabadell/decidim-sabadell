@@ -2,13 +2,14 @@ source 'https://rubygems.org'
 
 ruby '2.5.3'
 
-DECIDIM_VERSION = '~> 0.14.4'.freeze
+DECIDIM_VERSION = '~> 0.15.0'.freeze
 
 gem 'decidim', DECIDIM_VERSION
 gem 'virtus-multiparams'
 
 gem 'puma'
 gem 'uglifier'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platform: :mri
