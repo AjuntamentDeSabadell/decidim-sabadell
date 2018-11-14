@@ -9,6 +9,7 @@ gem 'virtus-multiparams'
 
 gem 'puma'
 gem 'uglifier'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platform: :mri
