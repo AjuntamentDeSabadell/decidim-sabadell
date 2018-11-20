@@ -7,6 +7,5 @@ if [ -f /app/tmp/pids/server.pid ]; then
 fi
 
 bundle exec rake db:migrate 2>/dev/null
-bundle exec whenever --update-crontab
 
 exec bundle exec "$@"
