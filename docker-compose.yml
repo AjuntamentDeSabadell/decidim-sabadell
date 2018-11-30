@@ -20,7 +20,6 @@ services:
       - GEOCODER_LOOKUP_APP_CODE=GEOCODER_LOOKUP_APP_CODE_VALUE
     image: 'ajsabadell/decidim-sabadell:DOCKER_IMAGE_TAG_VALUE'
     volumes:
-      - '/var/decidim/assets:/code/public/assets'
       - '/var/decidim/uploads:/code/public/uploads'
     deploy:
       replicas: 1
@@ -50,7 +49,6 @@ services:
       - GEOCODER_LOOKUP_APP_CODE=GEOCODER_LOOKUP_APP_CODE_VALUE
     image: 'ajsabadell/decidim-sabadell:DOCKER_IMAGE_TAG_VALUE'
     volumes:
-      - '/var/decidim/assets:/code/public/assets'
       - '/var/decidim/uploads:/code/public/uploads'
     deploy:
       replicas: 1
