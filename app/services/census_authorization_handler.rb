@@ -24,7 +24,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
 
   def metadata
     super.merge(
-      barri: response.xpath('//Barri').children.first.text,
+      barri: response.xpath('//Info//Barri').children.text,
       year_of_birth: date_of_birth.year
     )
   end
