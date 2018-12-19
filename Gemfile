@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.3'
 
-DECIDIM_VERSION = "0.15.1"
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", branch: "remove-current-feature-backport" }
 
 gem 'decidim', DECIDIM_VERSION
 gem 'virtus-multiparams'
