@@ -20,7 +20,7 @@ describe CensusAuthorizationHandler do
     before do
       allow(handler)
         .to receive(:response)
-        .and_return(Nokogiri::XML('<DecidimInfo><NumRegistres>1</NumRegistres><Info><Barri>La Creu Alta</Barri></Info></DecidimInfo>').remove_namespaces!)
+        .and_return(Nokogiri::XML('<DecidimInfo><NumRegistres>1</NumRegistres><Info><Sector>BERARDO</Sector><Barri>CASTELLARNAU</Barri><Sexe>H</Sexe></Info></DecidimInfo>').remove_namespaces!)
     end
 
     it_behaves_like 'an authorization handler'
@@ -71,8 +71,16 @@ describe CensusAuthorizationHandler do
       end
 
       describe 'metadata' do
+        it 'sets the appropriate sector' do
+          expect(handler.metadata[:sector]).to eq('BERARDO')
+        end
+
         it 'sets the appropriate neighborhood' do
-          expect(handler.metadata[:barri]).to eq('La Creu Alta')
+          expect(handler.metadata[:neighborhood]).to eq('CASTELLARNAU')
+        end
+
+        it 'sets the appropriate sector' do
+          expect(handler.metadata[:gender]).to eq('H')
         end
 
         it 'stores the birth year' do
