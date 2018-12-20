@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 # Checks the authorization against the census for Terrassa.
-require "digest/md5"
+require 'digest/md5'
 
 # This class performs a check against the official census database in order
 # to verify the citizen's residence.
@@ -21,16 +22,25 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
     Digest::MD5.hexdigest("#{document_number}#{sanitized_date_of_birth}").upcase
   end
 
+  def metadata
+    super.merge(
+      neighborhood: response.xpath('//Info//Barri').children.text,
+      sector: response.xpath('//Info//Sector').children.text,
+      gender: response.xpath('//Info//Sexe').children.text,
+      year_of_birth: date_of_birth.year
+    )
+  end
+
   private
 
   def sanitized_date_of_birth
-    @sanitized_date_of_birth ||= date_of_birth&.strftime("%d-%m-%Y")
+    @sanitized_date_of_birth ||= date_of_birth&.strftime('%d-%m-%Y')
   end
 
   def document_valid
     return nil if response.blank?
 
-    errors.add(:document_number, I18n.t("census_authorization_handler.invalid_document")) unless response.xpath("//NumRegistres").children.text == "1"
+    errors.add(:document_number, I18n.t('census_authorization_handler.invalid_document')) unless response.xpath('//NumRegistres').children.text == '1'
   end
 
   def response
@@ -40,30 +50,30 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
     return @response if defined?(@response)
 
     response ||= Faraday.post Rails.application.secrets.census_url do |request|
-      request.headers["Content-Type"] = "text/xml"
+      request.headers['Content-Type'] = 'text/xml'
       request.body = request_body
     end
 
-    response_body = HTMLEntities.new.decode response.body.force_encoding("ISO-8859-1")
+    response_body = HTMLEntities.new.decode response.body.force_encoding('ISO-8859-1')
     @response ||= Nokogiri::XML(response_body).remove_namespaces!
   end
 
   def request_body
-    @request_body ||= <<EOS
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:GetDadesHabitant>
-         <tem:sConnexio></tem:sConnexio>
-         <tem:DniDataNaix>#{unique_id}</tem:DniDataNaix>
-      </tem:GetDadesHabitant>
-   </soapenv:Body>
-</soapenv:Envelope>
-EOS
+    @request_body ||= <<~EOS
+      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+         <soapenv:Header/>
+         <soapenv:Body>
+            <tem:GetDadesHabitant>
+               <tem:sConnexio></tem:sConnexio>
+               <tem:DniDataNaix>#{unique_id}</tem:DniDataNaix>
+            </tem:GetDadesHabitant>
+         </soapenv:Body>
+      </soapenv:Envelope>
+    EOS
   end
 
   def check_age
-    errors.add(:date_of_birth, I18n.t("census_authorization_handler.age_under_14")) unless age && age >= 14
+    errors.add(:date_of_birth, I18n.t('census_authorization_handler.age_under_14')) unless age && age >= 14
   end
 
   def age
