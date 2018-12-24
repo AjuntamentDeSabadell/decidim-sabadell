@@ -51,10 +51,10 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
 
     response ||= Faraday.post 'http://srvapp.sabadell.net/WSDecidim/WSDecidim.asmx' do |request|
       request.headers['Content-Type'] = 'text/xml'
-      request.body = request_body.encode('iso-8859-1').force_encoding('utf-8')
+      request.body = request_body
     end
 
-    response_body = HTMLEntities.new.decode response.body.force_encoding('ISO-8859-1')
+    response_body = HTMLEntities.new.decode response.body.encode('iso-8859-1').force_encoding('utf-8')
     @response ||= Nokogiri::XML(response_body).remove_namespaces!
   end
 
