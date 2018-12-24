@@ -24,9 +24,9 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
 
   def metadata
     super.merge(
-      neighborhood: response.xpath('//Info//Barri').children.text,
-      sector: response.xpath('//Info//Sector').children.text,
-      gender: response.xpath('//Info//Sexe').children.text,
+      neighborhood: response.xpath('//Info//Barri').children.text.encode('iso-8859-1').force_encoding('utf-8'),
+      sector: response.xpath('//Info//Sector').children.text.encode('iso-8859-1').force_encoding('utf-8'),
+      gender: response.xpath('//Info//Sexe').children.text.encode('iso-8859-1').force_encoding('utf-8'),
       year_of_birth: date_of_birth.year
     )
   end
@@ -54,7 +54,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
       request.body = request_body
     end
 
-    response_body = HTMLEntities.new.decode response.body.encode('iso-8859-1').force_encoding('utf-8')
+    response_body = HTMLEntities.new.decode response.body.force_encoding('ISO-8859-1')
     @response ||= Nokogiri::XML(response_body).remove_namespaces!
   end
 
