@@ -16,7 +16,6 @@ services:
       - SMTP_PORT=SMTP_PORT_VALUE
       - SMTP_USERNAME=SMTP_USERNAME_VALUE
       - VIRTUAL_HOST=VIRTUAL_HOST_VALUE
-      - CENSUS_URL=http://srvapp.sabadell.net/WSDecidim/WSDecidim.asmx
       - GEOCODER_LOOKUP_APP_ID=GEOCODER_LOOKUP_APP_ID_VALUE
       - GEOCODER_LOOKUP_APP_CODE=GEOCODER_LOOKUP_APP_CODE_VALUE
     image: "ajsabadell/decidim-sabadell:DOCKER_IMAGE_TAG_VALUE"
@@ -48,7 +47,6 @@ services:
       - SMTP_USERNAME=SMTP_USERNAME_VALUE
       - GEOCODER_LOOKUP_APP_ID=GEOCODER_LOOKUP_APP_ID_VALUE
       - GEOCODER_LOOKUP_APP_CODE=GEOCODER_LOOKUP_APP_CODE_VALUE
-      - CENSUS_URL=http://srvapp.sabadell.net/WSDecidim/WSDecidim.asmx
     image: "ajsabadell/decidim-sabadell:DOCKER_IMAGE_TAG_VALUE"
     volumes:
       - "/var/decidim/uploads:/code/public/uploads"
