@@ -8,7 +8,7 @@ defaults: &defaults
         SIMPLECOV: true
         DATABASE_USERNAME: postgres
         FAIL_FAST: true
-        APPLICATION_VERSION: 0.15.1
+        APPLICATION_VERSION: 0.15.2
     - image: postgres
       environment:
         POSTGRES_USER: postgres
