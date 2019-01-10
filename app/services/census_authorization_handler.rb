@@ -19,7 +19,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   validate :check_age
 
   def unique_id
-    Digest::MD5.hexdigest("#{document_number}#{sanitized_date_of_birth}").upcase
+    Digest::MD5.hexdigest("#{document_number.to_s.upcase}#{sanitized_date_of_birth}").upcase
   end
 
   def metadata
