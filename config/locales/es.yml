@@ -111,13 +111,13 @@ es:
     decidim:
       assemblies:
         index:
-          promoted_assemblies: Espacios de Participación destacades
+          promoted_assemblies: Espacios de participación destacados
         order_by_assemblies:
           assemblies:
-            one: "%{count} Espacios de Participación"
-            other: "%{count} Espacios de Participación"
+            one: "%{count} espacio de participación"
+            other: "%{count} espacios de participación"
       assembly_header:
-        assembly_menu_item: El Espacio de de Participación
+        assembly_menu_item: Espacio de participación
     meetings:
       meetings:
         filters:
