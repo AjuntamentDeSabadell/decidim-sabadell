@@ -102,6 +102,15 @@ ca:
         passport: Passaport
     menu:
       assemblies: Espais de Participació
+    proposals:
+      proposals:
+        voting_rules:
+          minimum_votes_per_user:
+            description: ""
+            given_enough_votes: Has donat tots els suports necessaris. Gràcies per participar!
+            supports_remaining: Et falten %{remaining_votes} suport/s més per a que les teves valoracions siguin comptabilitzades en el procés.
+          vote_limit:
+            description: Cal donar suport a %{limit} propostes diferents.
   layouts:
     decidim:
       assemblies:
