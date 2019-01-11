@@ -1,5 +1,8 @@
 # decidim-sabadell
 
+[![CircleCI](https://circleci.com/gh/AjuntamentDeSabadell/decidim-sabadell.svg?style=svg)](https://circleci.com/gh/AjuntamentDeSabadell/decidim-sabadell)
+[![Docker Hub](https://img.shields.io/docker/build/ajsabadell/decidim-sabadell.svg)](https://hub.docker.com/r/ajsabadell/decidim-sabadell)
+
 ---
 
 Citizen Participation and Open Government Application
