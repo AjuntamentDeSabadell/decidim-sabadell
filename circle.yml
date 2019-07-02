@@ -69,7 +69,7 @@ jobs:
 
 workflows:
   version: 2
-  test:
+  main:
     jobs:
       - tests
       - build
