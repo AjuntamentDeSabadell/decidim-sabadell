@@ -1,4 +1,4 @@
-FROM decidim/decidim:0.17.2
+FROM decidim/decidim:0.18.0
 LABEL maintainer="info@codegram.com"
 
 ENV RAILS_ENV=development
