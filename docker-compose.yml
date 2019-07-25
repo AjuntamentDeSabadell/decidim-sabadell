@@ -21,6 +21,7 @@ services:
     image: "ajsabadell/decidim-sabadell:DOCKER_IMAGE_TAG_VALUE"
     volumes:
       - "/var/decidim/uploads:/code/public/uploads"
+      - "/var/decidim/logs:/code/log"
     deploy:
       replicas: 1
       update_config:
@@ -127,4 +128,4 @@ services:
       update_config:
         parallelism: 1
       restart_policy:
-        condition: on-failure
+        condition: always
