@@ -128,4 +128,4 @@ services:
       update_config:
         parallelism: 1
       restart_policy:
-        condition: always
+        condition: any
