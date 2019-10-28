@@ -57,6 +57,24 @@ services:
         parallelism: 1
       restart_policy:
         condition: on-failure
+  letsencrypt-companion:
+    image: hamburml/docker-flow-letsencrypt:latest
+    environment:
+      - DOMAIN_1=('decidim.sabadell.cat' 'www.decidim.sabadell.cat')
+      - CERTBOT_EMAIL=decidim@sabadell.cat
+      - PROXY_ADDRESS=proxy
+      - CERTBOT_CRON_RENEW=('0 3 * * *' '0 15 * * *')
+    volumes:
+      - "/var/decidim/letsencrypt:/etc/letsencrypt"
+    deploy:
+      labels:
+        - com.df.servicePath=/.well-known/acme-challenge
+        - com.df.notify=true
+        - com.df.distribute=true
+        - com.df.port=80
+      placement:
+        constraints: [node.id == <nodeId>]
+      replicas: 1
   memcached:
     image: "memcached:alpine"
     deploy:
@@ -73,8 +91,6 @@ services:
     environment:
       - LISTENER_ADDRESS=swarm-listener
       - MODE=swarm
-    volumes:
-      - /var/decidim/certs:/certs
     deploy:
       replicas: 1
       restart_policy:
