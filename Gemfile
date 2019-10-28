@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.6.3'
+ruby '2.6.5'
 
-DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", branch: "0.18-stable" }
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", branch: "0.19-stable" }
 
 gem 'decidim', DECIDIM_VERSION
 gem 'virtus-multiparams'
