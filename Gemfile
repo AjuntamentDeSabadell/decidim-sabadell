@@ -2,10 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.6.5'
 
-DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", branch: "0.19-stable" }
+DECIDIM_VERSION = "~> 0.20.0"
 
 gem 'decidim', DECIDIM_VERSION
 gem 'virtus-multiparams'
+gem "geocoder", "~> 1.5.2"
 
 gem 'puma'
 gem 'uglifier'
