@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.6.6'
 
-DECIDIM_VERSION = "~> 0.20.0"
+DECIDIM_VERSION = "~> 0.22.0"
 
 gem 'decidim', DECIDIM_VERSION
 gem 'virtus-multiparams'
@@ -19,7 +19,7 @@ end
 
 group :development do
   gem 'faker'
-  gem 'letter_opener_web', '~> 1.3.0'
+  gem 'letter_opener_web', '~> 1.4.0'
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
