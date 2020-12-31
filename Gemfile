@@ -27,8 +27,8 @@ end
 
 group :production do
   gem 'dalli'
-  gem 'sentry-raven'
-  gem 'sidekiq'
+  gem 'sentry-raven', '~> 3.1.0'
+  gem 'sidekiq', '~> 6.1.0'
 end
 
 group :test do
