@@ -83,7 +83,7 @@ docker network create --subnet 10.11.0.0/16 --opt com.docker.network.bridge.name
 Now we're ready to install Decidim Sabadell:
 
 ```
-mkdir -p /var/decidim/assets /var/decidim/uploads /var/decidim/certs /var/decidim/postgresql/data /var/decidim/backups
+mkdir -p /var/decidim/logs /var/decidim/uploads /var/decidim/certs /var/decidim/postgresql/data /var/decidim/backups
 ```
 
 Move to the directory where you want to install the application:
