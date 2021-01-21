@@ -1,0 +1,76 @@
+version: 2
+
+defaults: &defaults
+  docker:
+    - image: decidim/decidim:0.22.0-test
+      environment:
+        BUNDLE_GEMFILE: /app/Gemfile
+        SIMPLECOV: true
+        DATABASE_USERNAME: postgres
+        FAIL_FAST: true
+        APPLICATION_VERSION: 0.22.0
+    - image: postgres
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_HOST_AUTH_METHOD: trust
+  working_directory: /app
+jobs:
+  tests:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - bundler-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Install ruby dependencies
+          command: bundle install --jobs=4 --retry=3
+      - save_cache:
+          key: bundler-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /usr/local/bundle/
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Create test DB
+          command: RAILS_ENV=test bundle exec rails db:create db:schema:load
+      - run:
+          name: Run tests
+          command: bundle exec rake
+      - store_artifacts:
+          path: /app/tmp/capybara
+  build:
+    working_directory: /app
+    docker:
+      - image: docker:17.09.0-ce-git
+        environment:
+          APPLICATION_VERSION: 0.22.0
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Login to docker
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Pulling docker image
+          command: |
+            docker pull ajsabadell/decidim-sabadell || true
+      - run:
+          name: Build image
+          command: |
+            docker build -f Dockerfile -t ajsabadell/decidim-sabadell:$APPLICATION_VERSION --cache-from ajsabadell/decidim-sabadell .
+      - run:
+          name: Push image
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker push ajsabadell/decidim-sabadell:$APPLICATION_VERSION
+            fi
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - tests
+      - build
