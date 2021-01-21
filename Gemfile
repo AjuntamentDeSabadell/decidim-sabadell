@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '2.5.3'
+ruby '2.6.6'
 
-DECIDIM_VERSION = "~> 0.20.0"
+DECIDIM_VERSION = "~> 0.22.0"
 
 gem 'decidim', DECIDIM_VERSION
 gem 'virtus-multiparams'
-gem "geocoder", "~> 1.5.2"
+gem "geocoder", "~> 1.6.1"
 
-gem 'puma'
+gem 'puma', '>= 4.3'
 gem 'uglifier'
 gem 'whenever', require: false
 

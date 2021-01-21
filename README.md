@@ -26,8 +26,6 @@ docker build . -t ajsabadell/decidim-sabadell:dev -f Dockerfile.dev
 docker stack deploy --compose-file docker-compose.dev.yml decidim-sabadell
 ```
 
-Finally, you'll want to add `127.0.0.1 decidim.sabadell.dev` to your `/etc/hosts` file so you can access the app.
-
 If you need to run a rails command, you can do it like this:
 
 ```
