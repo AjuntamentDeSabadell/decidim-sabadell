@@ -25,6 +25,7 @@ Then, since we're using a different Docker image for development, you need to bu
 docker build . -t ajsabadell/decidim-sabadell:dev -f Dockerfile.dev
 docker stack deploy --compose-file docker-compose.dev.yml decidim-sabadell
 ```
+You can access to decidim through `localhost` in your browser.
 
 If you need to run a rails command, you can do it like this:
 
