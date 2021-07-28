@@ -11,9 +11,9 @@ Decidim.configure do |config|
   # Geocoder configuration
   config.geocoder = {
     static_map_url: "https://image.maps.ls.hereapi.com/mia/1.6/mapview",
-    here_api_key: Rails.application.secrets.geocoder[:here_api_key],
+    here_api_key: Rails.application.secrets.geocoder[:here_api_key]
   }
-
+  
   # Currency unit
   config.currency_unit = "€"
 end
