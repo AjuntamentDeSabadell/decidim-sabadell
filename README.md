@@ -13,7 +13,7 @@ This is the opensource code repository for "decidim-sabadell", based on [Decidim
 
 You can setup everything with Docker & Docker compose, run:
 
-As a one time thing, you first need to initialize the Docker swarm with:
+As a one time thing, you first need to initialize the Docker swarm with::
 
 ```
 docker swarm init
