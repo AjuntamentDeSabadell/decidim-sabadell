@@ -27,7 +27,7 @@ docker stack deploy --compose-file docker-compose.dev.yml decidim-sabadell
 ```
 You can access to decidim through `localhost` in your browser.
 
-If you need to run a rails command, you can do it like this:
+If you need to run a rails command, you can do it like this::
 
 ```
 docker exec -it `docker ps | grep decidim-sabadell_app-worker | awk '{print $1}'` bundle exec rake db:create
