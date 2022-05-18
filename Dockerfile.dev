@@ -1,4 +1,4 @@
-FROM decidim/decidim:0.22.0
+FROM decidim/decidim:0.23.1
 LABEL maintainer="sistemas@aspgems.com"
 
 ENV RAILS_ENV=development
