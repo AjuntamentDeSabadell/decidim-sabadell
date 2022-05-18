@@ -11,11 +11,11 @@ class AddUniquenessToNameAndDocumentNumberToUserGroups < ActiveRecord::Migration
   end
 
   def fix_field(field_name)
-    Decidim::UserGroup.select(field_name).group(field_name).having("count(*) > 1").count.keys.each do |value|
-      Decidim::UserGroup.where(field_name => value).each_with_index do |user_group, index|
-        next if index.zero?
-        user_group.update_attribute(field_name, "#{value} (#{index})")
-      end
-    end
+    # Decidim::UserGroup.select(field_name).group(field_name).having("count(*) > 1").count.keys.each do |value|
+    #   Decidim::UserGroup.where(field_name => value).each_with_index do |user_group, index|
+    #     next if index.zero?
+    #     user_group.update_attribute(field_name, "#{value} (#{index})")
+    #   end
+    # end
   end
 end
