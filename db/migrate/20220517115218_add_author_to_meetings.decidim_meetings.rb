@@ -17,7 +17,7 @@ class AddAuthorToMeetings < ActiveRecord::Migration[5.2]
         meeting.decidim_author_id = meeting.organizer_id
         meeting.decidim_author_type = "Decidim::UserBaseEntity"
       else
-        meeting.decidim_author_id = 1#meeting.organization.id
+        meeting.decidim_author_id = 1
         meeting.decidim_author_type = "Decidim::Organization"
       end
       meeting.save!
