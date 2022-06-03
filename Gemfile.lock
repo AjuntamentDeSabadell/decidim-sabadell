@@ -121,7 +121,7 @@ GEM
     crass (1.0.6)
     css_parser (1.11.0)
       addressable
-    dalli (2.7.11)
+    dalli (2.7.10)
     database_cleaner (2.0.1)
       database_cleaner-active_record (~> 2.0.0)
     database_cleaner-active_record (2.0.1)
@@ -775,7 +775,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  dalli (~> 2.7.10)
+  dalli (= 2.7.10)
   database_cleaner
   decidim (= 0.23.1)
   decidim-dev (= 0.23.1)
