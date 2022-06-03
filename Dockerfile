@@ -2,6 +2,7 @@ FROM decidim/decidim:0.23.1
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
+RUN rm -rf /code/db/migrate
 COPY . .
 RUN bundle install
 RUN bundle exec rake assets:precompile
