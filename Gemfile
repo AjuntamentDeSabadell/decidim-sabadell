@@ -7,6 +7,7 @@ DECIDIM_VERSION = "= 0.23.1"
 gem 'decidim', DECIDIM_VERSION
 gem 'virtus-multiparams'
 gem "geocoder", "~> 1.6.1"
+gem "rails", "= 5.2.4.4"
 
 gem 'puma', '>= 4.3'
 gem 'uglifier'
